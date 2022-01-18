@@ -1,7 +1,6 @@
 import tkinter
 from tkinter import *
 from tkinter.constants import DISABLED, NORMAL
-from tkinter import messagebox
 
 root = Tk()
 
@@ -87,7 +86,6 @@ def Restart(winMessageFxn):
 
     winMessageFxn.destroy()
 
-
     changeState()
     
     
@@ -106,7 +104,7 @@ def Winner(winner):
         newgame = tkinter.Button(winMessage, text='Exit', font='Arial 12', command = lambda: root.destroy())
         newgame.place(x=127, y=105)
 
-    else:
+    elif winner == 'Player 2':
         winMessage = Toplevel(master=None)
         winMessage.title("Winner")
         winMessage.geometry('300x200')
@@ -118,9 +116,30 @@ def Winner(winner):
         newgame.place(x=100, y=65)
         newgame = tkinter.Button(winMessage, text='Exit', font='Arial 12', command = lambda: root.destroy())
         newgame.place(x=127, y=105)
+    elif winner != 'Player 1' or winner != 'Player 2':
+            if row1col1.get() != '':
+                if row1col2.get() != '':
+                    if row1col3.get() != '':
+                        if row2col1.get() != '':
+                            if row2col2.get() != '':
+                                if row2col3.get() != '':
+                                    if row3col1.get() != '':
+                                        if row3col2.get() != '':
+                                            if row3col3.get() != '':
+                                                winMessage = Toplevel(master=None)
+                                                winMessage.title("Winner")
+                                                winMessage.geometry('300x200')
+                                                winMessage.config(bg='white')
 
+                                                winnerText = tkinter.Label(winMessage,text="It's a draw game", bg='white', font='Calibri 12')
+                                                winnerText.place(x=42, y=30)
+                                                newgame = tkinter.Button(winMessage, text='New game', font='Arial 12', command= lambda : Restart(winMessage))
+                                                newgame.place(x=100, y=65)
+                                                newgame = tkinter.Button(winMessage, text='Exit', font='Arial 12', command = lambda: root.destroy())
+                                                newgame.place(x=127, y=105)
 
-def btnOneCmd(x, y, z):
+winner = ''
+def btnOneCmd(x, y):
     if playerOneBtn['state'] == tkinter.NORMAL:
         row1col1.set(x)
         changeState()
@@ -132,13 +151,11 @@ def btnOneCmd(x, y, z):
     if (row1col1.get() == x and row1col2.get() == x and row1col3.get() == x) or (row1col1.get() == x and row2col2.get() == x and row3col3.get() == x) or (row1col1.get() == x and row2col1.get() == x and row3col1.get() == x):
         winner = 'Player 1'
         Winner(winner)
-        winner = ''
     if (row1col1.get() == y and row1col2.get() == y and row1col3.get() == y) or (row1col1.get() == y and row2col2.get() == y and row3col3.get() == y) or (row1col1.get() == y and row2col1.get() == y and row3col1.get() == y):
         winner = 'Player 2'
         Winner(winner)
-        winner = ''
 
-def btnTwoCmd(x, y, z):
+def btnTwoCmd(x, y):
     if playerOneBtn['state'] == tkinter.NORMAL:
         row1col2.set(x)
         changeState()
@@ -148,15 +165,16 @@ def btnTwoCmd(x, y, z):
         changeState()
         r1c2['state'] = tkinter.DISABLED
     if (row1col1.get() == x and row1col2.get() == x and row1col3.get() == x) or (row1col2.get() == x and row2col2.get() == x and row3col2.get() == x):
-        
         winner = 'Player 1'
         Winner(winner)
     if (row1col1.get() == y and row1col2.get() == y and row1col3.get() == y) or (row1col2.get() == y and row2col2.get() == y and row3col2.get() == y):
-        
         winner = 'Player 2'
         Winner(winner)
+    else:
+        winner = ''
+        Winner(winner)
 
-def btnThreeCmd(x, y, z):
+def btnThreeCmd(x, y):
     if playerOneBtn['state'] == tkinter.NORMAL:
         row1col3.set(x)
         changeState()
@@ -166,15 +184,16 @@ def btnThreeCmd(x, y, z):
         changeState()
         r1c3['state'] = tkinter.DISABLED
     if (row1col1.get() == x and row1col2.get() == x and row1col3.get() == x) or (row1col3.get() == x and row2col3.get() == x and row3col3.get() == x) or (row1col3.get() == x and row2col2.get() == x and row3col1.get() == x):
-        
         winner = 'Player 1'
         Winner(winner)
     if (row1col1.get() == y and row1col2.get() == y and row1col3.get() == y) or (row1col3.get() == y and row2col3.get() == y and row3col3.get() == y) or (row1col3.get() == y and row2col2.get() == y and row3col1.get() == y):
-        
         winner = 'Player 2'
         Winner(winner)
+    else:
+        winner = ''
+        Winner(winner)
 
-def btnFourCmd(x, y, z):
+def btnFourCmd(x, y):
     if playerOneBtn['state'] == tkinter.NORMAL:
         row2col1.set(x)
         changeState()
@@ -184,15 +203,16 @@ def btnFourCmd(x, y, z):
         changeState()
         r2c1['state'] = tkinter.DISABLED
     if (row1col1.get() == x and row2col1.get() == x and row3col1.get() == x) or (row2col1.get() == x and row2col2.get() == x and row2col3.get() == x):
-        
         winner = 'Player 1'
         Winner(winner)
     if (row1col1.get() == y and row2col1.get() == y and row3col1.get() == y) or (row2col1.get() == y and row2col2.get() == y and row2col3.get() == y):
-        
         winner = 'Player 2'
         Winner(winner)
+    else:
+        winner = ''
+        Winner(winner)
 
-def btnFiveCmd(x, y, z):
+def btnFiveCmd(x, y):
     if playerOneBtn['state'] == tkinter.NORMAL:
         row2col2.set(x)
         changeState()
@@ -202,15 +222,16 @@ def btnFiveCmd(x, y, z):
         changeState()
         r2c2['state'] = tkinter.DISABLED
     if (row1col2.get() == x and row2col2.get() == x and row3col3.get() == x) or (row1col2.get() == x and row2col2.get() == x and row3col2.get() == x) or (row1col3.get() == x and row2col2.get() == x and row3col1.get() == x)  or (row2col1.get() == x and row2col2.get() == x and row2col3.get() == x) or (row3col1.get() == x and row2col2.get() == x and row1col3.get() == x) or (row1col1.get() == x and row2col2.get() == x and row3col3.get() == x):
-        
         winner = 'Player 1'
         Winner(winner)
     if (row1col2.get() == y and row2col2.get() == y and row3col3.get() == y) or (row1col2.get() == y and row2col2.get() == y and row3col2.get() == y) or (row1col3.get() == y and row2col2.get() == y and row3col1.get() == y)  or (row2col1.get() == y and row2col2.get() == y and row2col3.get() == y) or (row3col1.get() == y and row2col2.get() == y and row1col3.get() == y) or (row1col1.get() == y and row2col2.get() == y and row3col3.get() == y):
-        
         winner = 'Player 2'
         Winner(winner)
+    else:
+        winner = ''
+        Winner(winner)
     
-def btnSixCmd(x, y, z):
+def btnSixCmd(x, y):
     if playerOneBtn['state'] == tkinter.NORMAL:
         row2col3.set(x)
         changeState()
@@ -220,15 +241,16 @@ def btnSixCmd(x, y, z):
         changeState()
         r2c3['state'] = tkinter.DISABLED
     if (row1col3.get() == x and row2col3.get() == x and row3col3.get() == x) or (row2col1.get() == x and row2col2.get() == x and row2col3.get() == x):
-        
         winner = 'Player 1'
         Winner(winner)
     if (row1col3.get() == y and row2col3.get() == y and row3col3.get() == y) or (row2col1.get() == y and row2col2.get() == y and row2col3.get() == y):
-        
         winner = 'Player 2'
         Winner(winner)
+    else:
+        winner = ''
+        Winner(winner)
 
-def btnSevenCmd(x, y, z):
+def btnSevenCmd(x, y):
     if playerOneBtn['state'] == tkinter.NORMAL:
         row3col1.set(x)
         changeState()
@@ -240,13 +262,14 @@ def btnSevenCmd(x, y, z):
     if (row1col1.get() == x and row2col1.get() == x and row3col1.get() == x) or (row3col1.get() == x and row2col2.get() == x and row1col3.get() == x) or (row3col1.get() == x and row3col2.get() == x and row3col3.get() == x):
         winner = 'Player 1'
         Winner(winner)
-        winner = ''
     if (row1col1.get() == y and row2col1.get() == y and row3col1.get() == y) or (row3col1.get() == y and row2col2.get() == y and row1col3.get() == y) or (row3col1.get() == y and row3col2.get() == y and row3col3.get() == y):
         winner = 'Player 2'
         Winner(winner)
+    else:
         winner = ''
+        Winner(winner)
 
-def btnEightCmd(x, y, z):
+def btnEightCmd(x, y):
     if playerOneBtn['state'] == tkinter.NORMAL:
         row3col2.set(x)
         changeState()
@@ -256,15 +279,16 @@ def btnEightCmd(x, y, z):
         changeState()
         r3c2['state'] = tkinter.DISABLED
     if (row1col2.get() == x and row2col2.get() == x and row3col2.get() == x) or (row3col1.get() == x and row3col2.get() == x and row3col3.get() == x):
-        
         winner = 'Player 1'
         Winner(winner)
     if (row1col2.get() == y and row2col2.get() == y and row3col2.get() == y) or (row3col1.get() == y and row3col2.get() == y and row3col3.get() == y):
-        
         winner = 'Player 2'
         Winner(winner)
+    else:
+        winner = ''
+        Winner(winner)
 
-def btnNineCmd(x, y, z):
+def btnNineCmd(x, y):
     if playerOneBtn['state'] == tkinter.NORMAL:
         row3col3.set(x)
         changeState()
@@ -274,41 +298,42 @@ def btnNineCmd(x, y, z):
         changeState()
         r3c3['state'] = tkinter.DISABLED
     if (row1col3.get() == x and row2col3.get() == x and row3col3.get() == x) or (row1col1.get() == x and row2col2.get() == x and row3col3.get() == x) or (row3col1.get() == x and row3col2.get() == x and row3col3.get() == x):
-        
         winner = 'Player 1'
         Winner(winner)
     if (row1col3.get() == y and row2col3.get() == y and row3col3.get() == y) or (row1col1.get() == y and row2col2.get() == y and row3col3.get() == y) or (row3col1.get() == y and row3col2.get() == y and row3col3.get() == y):
-        
         winner = 'Player 2'
+        Winner(winner)
+    else:
+        winner = ''
         Winner(winner)
 
 
 
-r1c1= tkinter.Button(root, textvariable=row1col1, font="Arial 20",bg='#F4BB44', width='3', height='2', command=lambda b1 = 'Button 1': btnOneCmd("X", "O", b1), state= tkinter.NORMAL)
+r1c1= tkinter.Button(root, textvariable=row1col1, font="Arial 20",bg='#F4BB44', width='3', height='2', command=lambda: btnOneCmd("X", "O"), state= tkinter.NORMAL)
 r1c1.place(x=70, y=100)
 
-r1c2= tkinter.Button(root,textvariable=row1col2, font="Arial 20",bg='#F4BB44', width='3', height='2', command=lambda b2 = 'Button 2': btnTwoCmd("X", "O", b2), state= tkinter.NORMAL)
+r1c2= tkinter.Button(root,textvariable=row1col2, font="Arial 20",bg='#F4BB44', width='3', height='2', command=lambda: btnTwoCmd("X", "O"), state= tkinter.NORMAL)
 r1c2.place(x=144, y=100)
 
-r1c3 = tkinter.Button(root, textvariable=row1col3, font="Arial 20",bg='#F4BB44', width='3', height='2', command=lambda b3 = 'Button 3': btnThreeCmd("X", "O", b3), state= tkinter.NORMAL)
+r1c3 = tkinter.Button(root, textvariable=row1col3, font="Arial 20",bg='#F4BB44', width='3', height='2', command=lambda: btnThreeCmd("X", "O",), state= tkinter.NORMAL)
 r1c3.place(x=218, y=100)
 
-r2c1 = tkinter.Button(root,textvariable=row2col1, font="Arial 20",bg='#F4BB44', width='3', height='2', command=lambda b4 = 'Button 4': btnFourCmd("X", "O", b4), state= tkinter.NORMAL)
+r2c1 = tkinter.Button(root,textvariable=row2col1, font="Arial 20",bg='#F4BB44', width='3', height='2', command=lambda: btnFourCmd("X", "O",), state= tkinter.NORMAL)
 r2c1.place(x=70, y=175)
 
-r2c2 = tkinter.Button(root, textvariable=row2col2, font="Arial 20",bg='#F4BB44', width='3', height='2', command=lambda b5 = 'Button 5': btnFiveCmd("X", "O", b5), state= tkinter.NORMAL)
+r2c2 = tkinter.Button(root, textvariable=row2col2, font="Arial 20",bg='#F4BB44', width='3', height='2', command=lambda: btnFiveCmd("X", "O",), state= tkinter.NORMAL)
 r2c2.place(x=144, y=175)
 
-r2c3 = tkinter.Button(root, textvariable=row2col3, font="Arial 20",bg='#F4BB44', width='3', height='2', command=lambda b6 = 'Button 6': btnSixCmd("X", "O", b6), state= tkinter.NORMAL)
+r2c3 = tkinter.Button(root, textvariable=row2col3, font="Arial 20",bg='#F4BB44', width='3', height='2', command=lambda: btnSixCmd("X", "O",), state= tkinter.NORMAL)
 r2c3.place(x=218, y=175)
 
-r3c1= tkinter.Button(root,textvariable=row3col1, font="Arial 20",bg='#F4BB44', width='3', height='2', command=lambda b7 = 'Button 7': btnSevenCmd("X", "O", b7), state= tkinter.NORMAL)
+r3c1= tkinter.Button(root,textvariable=row3col1, font="Arial 20",bg='#F4BB44', width='3', height='2', command=lambda: btnSevenCmd("X", "O",), state= tkinter.NORMAL)
 r3c1.place(x=70, y=250)
 
-r3c2 = tkinter.Button(root, textvariable=row3col2, font="Arial 20",bg='#F4BB44', width='3', height='2', command=lambda b8 = 'Button 8': btnEightCmd("X", "O", b8), state= tkinter.NORMAL)
+r3c2 = tkinter.Button(root, textvariable=row3col2, font="Arial 20",bg='#F4BB44', width='3', height='2', command=lambda: btnEightCmd("X", "O",), state= tkinter.NORMAL)
 r3c2.place(x=144, y=250)
 
-r3c3 = tkinter.Button(root, textvariable=row3col3, font="Arial 20",bg='#F4BB44', width='3', height='2', command=lambda b9 = 'Button 9': btnNineCmd("X", "O", b9), state= tkinter.NORMAL)
+r3c3 = tkinter.Button(root, textvariable=row3col3, font="Arial 20",bg='#F4BB44', width='3', height='2', command=lambda: btnNineCmd("X", "O",), state= tkinter.NORMAL)
 r3c3.place(x=218, y=250)
 
 
