@@ -5,6 +5,8 @@ from tkinter.constants import DISABLED, NORMAL
 
 root = tkinter.Tk()
 
+root.resizable(0, 0)
+
 root.geometry('355x400')
 
 root.title('Tic-Tac-Toe')
