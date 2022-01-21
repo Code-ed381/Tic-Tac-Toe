@@ -1,14 +1,22 @@
 import tkinter
 from tkinter import *
+from tkinter.constants import DISABLED, NORMAL
 
 def leftclick(event):
-    print("left click")
     box1.create_text(40,40,text="x",font="Arial 72")
+    xButton['state'] = tkinter.DISABLED
+    xButton['bg'] = 'black'
+    oButton['state'] = tkinter.NORMAL
+    oButton['bg'] = 'white'
+    oButton['fg'] = 'black'
 def leftclick2(event):
-    print("left click")
     box2.create_text(40,40,text="o",font="Arial 72")
-    '''if "x" in box1:
-        box2.create_text(40,40,text="o",font="Arial 72")'''
+    xButton['state'] = tkinter.NORMAL
+    xButton['bg'] = 'white'
+    xButton['fg'] = 'black'
+    oButton['state'] = tkinter.DISABLED
+    oButton['bg'] = 'black'
+
     
 window = tkinter.Tk()
 window.geometry('300x350')
@@ -63,8 +71,10 @@ box9.bind("<Button-1>",leftclick)
 box9.place(x=196,y=205)
 
 xClick = canvas.postscript
-xButton = tkinter.Button(window,text="X",font="Calibiri 14",fg="white",bg="black").place(x=45,y=300,width=100)
-oButton = tkinter.Button(window,text="O",font="Calibiri 14",fg="white",bg="black").place(x=145,y=300,width=100)
+xButton = tkinter.Button(window,text="X",font="Calibri 14",fg="black",bg="white", state=NORMAL)
+xButton.place(x=45,y=300,width=100)
+oButton = tkinter.Button(window,text="O",font="Calibri 14",fg="white",bg="black", state=DISABLED)
+oButton.place(x=145,y=300,width=100)
 
 
 
