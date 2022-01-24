@@ -7,184 +7,111 @@ window.geometry('300x350')
 window.title("Xs AND Os")
 window.configure(bg="#FFE135")
 
-def boxOne(event):
-    if xButton['state'] == tkinter.NORMAL:
-        btOne = box1.create_text(40,40,text="x",font="Arial 72")
+def changeStateOne():
         xButton['state'] = tkinter.DISABLED
         xButton['bg'] = 'black'
         xButton['fg'] = 'white'
         oButton['state'] = tkinter.NORMAL
         oButton['bg'] = 'white'
         oButton['fg'] = 'black'
-        box1.unbind('<Button-1>')
-    elif xButton['state'] == tkinter.DISABLED:
-        btOne = box1.create_text(40,40,text="o",font="Arial 72")
+
+def changeStateTwo():
         xButton['state'] = tkinter.NORMAL
         xButton['bg'] = 'white'
         xButton['fg'] = 'black'
         oButton['state'] = tkinter.DISABLED
         oButton['bg'] = 'black'
         oButton['fg'] = 'white'
+
+
+def boxOne(event):
+    if xButton['state'] == tkinter.NORMAL:
+        btOne = box1.create_text(40,40,text="x",font="Arial 72")
+        changeStateOne()
+        box1.unbind('<Button-1>')
+    elif xButton['state'] == tkinter.DISABLED:
+        btOne = box1.create_text(40,40,text="o",font="Arial 72")
+        changeStateTwo()
         box1.unbind('<Button-1>')
 
 def boxTwo(event):
     if xButton['state'] == tkinter.NORMAL:
         box2.create_text(40,40,text="x",font="Arial 72")
-        xButton['state'] = tkinter.DISABLED
-        xButton['bg'] = 'black'
-        xButton['fg'] = 'white'
-        oButton['state'] = tkinter.NORMAL
-        oButton['bg'] = 'white'
-        oButton['fg'] = 'black'
+        changeStateOne()
         box2.unbind('<Button-1>')
     elif xButton['state'] == tkinter.DISABLED:
         box2.create_text(40,40,text="o",font="Arial 72")
-        xButton['state'] = tkinter.NORMAL
-        xButton['bg'] = 'white'
-        xButton['fg'] = 'black'
-        oButton['state'] = tkinter.DISABLED
-        oButton['bg'] = 'black'
-        oButton['fg'] = 'white'
+        changeStateTwo()
         box2.unbind('<Button-1>')
 
 def boxThree(event):
     if xButton['state'] == tkinter.NORMAL:
         box3.create_text(40,40,text="x",font="Arial 72")
-        xButton['state'] = tkinter.DISABLED
-        xButton['bg'] = 'black'
-        xButton['fg'] = 'white'
-        oButton['state'] = tkinter.NORMAL
-        oButton['bg'] = 'white'
-        oButton['fg'] = 'black'
+        changeStateOne()
         box3.unbind('<Button-1>')
     elif xButton['state'] == tkinter.DISABLED:
         box3.create_text(40,40,text="o",font="Arial 72")
-        xButton['state'] = tkinter.NORMAL
-        xButton['bg'] = 'white'
-        xButton['fg'] = 'black'
-        oButton['state'] = tkinter.DISABLED
-        oButton['bg'] = 'black'
-        oButton['fg'] = 'white'
+        changeStateTwo()
         box3.unbind('<Button-1>')
 
 def boxFour(event):
     if xButton['state'] == tkinter.NORMAL:
         box4.create_text(40,40,text="x",font="Arial 72")
-        xButton['state'] = tkinter.DISABLED
-        xButton['bg'] = 'black'
-        xButton['fg'] = 'white'
-        oButton['state'] = tkinter.NORMAL
-        oButton['bg'] = 'white'
-        oButton['fg'] = 'black'
+        changeStateOne()
         box4.unbind('<Button-1>')
     elif xButton['state'] == tkinter.DISABLED:
         box4.create_text(40,40,text="o",font="Arial 72")
-        xButton['state'] = tkinter.NORMAL
-        xButton['bg'] = 'white'
-        xButton['fg'] = 'black'
-        oButton['state'] = tkinter.DISABLED
-        oButton['bg'] = 'black'
-        oButton['fg'] = 'white'
+        changeStateTwo()
         box4.unbind('<Button-1>')
 
 def boxFive(event):
     if xButton['state'] == tkinter.NORMAL:
         box5.create_text(40,40,text="x",font="Arial 72")
-        xButton['state'] = tkinter.DISABLED
-        xButton['bg'] = 'black'
-        xButton['fg'] = 'white'
-        oButton['state'] = tkinter.NORMAL
-        oButton['bg'] = 'white'
-        oButton['fg'] = 'black'
+        changeStateOne()
         box5.unbind('<Button-1>')
     elif xButton['state'] == tkinter.DISABLED:
         box5.create_text(40,40,text="o",font="Arial 72")
-        xButton['state'] = tkinter.NORMAL
-        xButton['bg'] = 'white'
-        xButton['fg'] = 'black'
-        oButton['state'] = tkinter.DISABLED
-        oButton['bg'] = 'black'
-        oButton['fg'] = 'white'
+        changeStateTwo()
         box5.unbind('<Button-1>')
 
 def boxSix(event):
     if xButton['state'] == tkinter.NORMAL:
         box6.create_text(40,40,text="x",font="Arial 72")
-        xButton['state'] = tkinter.DISABLED
-        xButton['bg'] = 'black'
-        xButton['fg'] = 'white'
-        oButton['state'] = tkinter.NORMAL
-        oButton['bg'] = 'white'
-        oButton['fg'] = 'black'
+        changeStateOne()
         box6.unbind('<Button-1>')
     elif xButton['state'] == tkinter.DISABLED:
         box6.create_text(40,40,text="o",font="Arial 72")
-        xButton['state'] = tkinter.NORMAL
-        xButton['bg'] = 'white'
-        xButton['fg'] = 'black'
-        oButton['state'] = tkinter.DISABLED
-        oButton['bg'] = 'black'
-        oButton['fg'] = 'white'
+        changeStateTwo()
         box6.unbind('<Button-1>')
 
 def boxSeven(event):
     if xButton['state'] == tkinter.NORMAL:
         box7.create_text(40,40,text="x",font="Arial 72")
-        xButton['state'] = tkinter.DISABLED
-        xButton['bg'] = 'black'
-        xButton['fg'] = 'white'
-        oButton['state'] = tkinter.NORMAL
-        oButton['bg'] = 'white'
-        oButton['fg'] = 'black'
+        changeStateOne()
         box7.unbind('<Button-1>')
     elif xButton['state'] == tkinter.DISABLED:
         box7.create_text(40,40,text="o",font="Arial 72")
-        xButton['state'] = tkinter.NORMAL
-        xButton['bg'] = 'white'
-        xButton['fg'] = 'black'
-        oButton['state'] = tkinter.DISABLED
-        oButton['bg'] = 'black'
-        oButton['fg'] = 'white'
+        changeStateTwo()
         box7.unbind('<Button-1>')
 
 def boxEight(event):
     if xButton['state'] == tkinter.NORMAL:
         box8.create_text(40,40,text="x",font="Arial 72")
-        xButton['state'] = tkinter.DISABLED
-        xButton['bg'] = 'black'
-        xButton['fg'] = 'white'
-        oButton['state'] = tkinter.NORMAL
-        oButton['bg'] = 'white'
-        oButton['fg'] = 'black'
+        changeStateOne()
         box8.unbind('<Button-1>')
     elif xButton['state'] == tkinter.DISABLED:
         box8.create_text(40,40,text="o",font="Arial 72")
-        xButton['state'] = tkinter.NORMAL
-        xButton['bg'] = 'white'
-        xButton['fg'] = 'black'
-        oButton['state'] = tkinter.DISABLED
-        oButton['bg'] = 'black'
-        oButton['fg'] = 'white'
+        changeStateTwo()
         box8.unbind('<Button-1>')
 
 def boxNine(event):
     if xButton['state'] == tkinter.NORMAL:
         box9.create_text(40,40,text="x",font="Arial 72")
-        xButton['state'] = tkinter.DISABLED
-        xButton['bg'] = 'black'
-        xButton['fg'] = 'white'
-        oButton['state'] = tkinter.NORMAL
-        oButton['bg'] = 'white'
-        oButton['fg'] = 'black'
+        changeStateOne()
         box9.unbind('<Button-1>')
     elif xButton['state'] == tkinter.DISABLED:
         box9.create_text(40,40,text="o",font="Arial 72")
-        xButton['state'] = tkinter.NORMAL
-        xButton['bg'] = 'white'
-        xButton['fg'] = 'black'
-        oButton['state'] = tkinter.DISABLED
-        oButton['bg'] = 'black'
-        oButton['fg'] = 'white'
+        changeStateTwo()
         box9.unbind('<Button-1>')
     
 
