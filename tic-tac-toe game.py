@@ -142,11 +142,28 @@ def boxNine(event):
     win()
 
 def Restart(newTopLevel):
-    xButton['state'] = NORMAL
-    oButton['state'] = DISABLED
+    changeStateTwo()
 
-    box1.create_text(40,40,text="",font="Arial 72")
+    box1.delete('all')
+    box2.delete('all')
+    box3.delete('all')
+    box4.delete('all')
+    box5.delete('all')
+    box6.delete('all')
+    box7.delete('all')
+    box8.delete('all')
+    box9.delete('all')
+
     box1.bind('<Button-1>', boxOne)
+    box2.bind('<Button-1>', boxTwo)
+    box3.bind('<Button-1>', boxThree)
+    box4.bind('<Button-1>', boxFour)
+    box5.bind('<Button-1>', boxFive)
+    box6.bind('<Button-1>', boxSix)
+    box7.bind('<Button-1>', boxSeven)
+    box8.bind('<Button-1>', boxEight)
+    box9.bind('<Button-1>', boxNine)
+
     newTopLevel.destroy()
 
 def Winner(winner):
@@ -249,7 +266,7 @@ def win():
 
 canvas = tkinter.Canvas(window,bg="white",highlightthickness=0)
 canvas.place(x=10,y=20,width=270)
-canvas.create_line(90,250,90,20, fill="green", width=3)
+canvas.create_line(90,250,90,20, fill="green", width=4)
 canvas.create_line(180,250,180,20, fill="green", width=3)
 canvas.create_line(20,90,250,90, fill="green", width=3)
 canvas.create_line(20,180,250,180, fill="green", width=3)
