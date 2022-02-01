@@ -1,14 +1,19 @@
 import tkinter
 from tkinter import *
 from tkinter import Menu
-"""from tkinter.constants import DISABLED, NORMAL"""
-
+from tkinter.constants import DISABLED, NORMAL
+from PIL import ImageTk,Image
 
 window = tkinter.Tk()
 window.geometry('300x400')
 window.title("Xs AND Os")
 window.configure(bg="#FFE135")
 
+img3 = ImageTk.PhotoImage(Image.open("C:/Users/Deborah/Desktop/bg1.jpg"))
+winBg = Canvas(window, width=300, height=400)
+winBg.pack()
+winBg.create_image(0,0,image=img3,anchor='nw')
+window.resizable(False,False)
 
 def changeStateOne():
         xButton['state'] = tkinter.DISABLED
@@ -162,6 +167,9 @@ def Help():
     rulesText = tkinter.Label(help, text=rulesTxt, bg='white', font='Arial 10')
     rulesText.pack()
 
+'''img = ImageTk.PhotoImage(Image.open("C:/Users/Deborah/Desktop/new  game.png"))
+img2 = ImageTk.PhotoImage(Image.open("C:/Users/Deborah/Desktop/exit.png"))'''
+
 def Restart(newTopLevel):
     changeStateTwo()
 
@@ -187,6 +195,7 @@ def Restart(newTopLevel):
 
     newTopLevel.destroy()
 
+img = ImageTk.PhotoImage(Image.open("C:/Users/Deborah/Desktop/bg2.jpg"))
 def MenuNewGame():
     changeStateTwo()
 
@@ -209,47 +218,64 @@ def MenuNewGame():
     box7.bind('<Button-1>', boxSeven)
     box8.bind('<Button-1>', boxEight)
     box9.bind('<Button-1>', boxNine)
- 
+    
 def Winner(winner):
+    global newwinBg
     if winner == 'player1':
         newwindow = Toplevel(master=None)
         newwindow.title('Player One Wins')
-        newwindow.geometry('320x200')
-        newwindow.config(bg='white')
+        newwindow.geometry('300x200')
+        newwindow.config(bg="#FFE135")
+        
+        newwinBg = Canvas(newwindow, width=300, height=200)
+        newwinBg.pack()
+        newwinBg.create_image(0,0,image=img,anchor='nw')
+        newwindow.resizable(False,False)
 
-        winMessage = Label(newwindow, text='Player One Won this game', bg='white', font='Calibri 14')
-        winMessage.place(x=40, y=25)
-        newGame = Button(newwindow, text='New game',width='10', font='Arial 14',image=newGame_Btn, command=lambda: Restart(newwindow))
+
+        '''winMessage = Label(newwindow, text='Player One Won this game', bg="#FFE135", font='Calibri 14')
+        winMessage.place(x=40, y=25)'''
+        newwinBg.create_text(150,40,text='Player One Won this game',font='Elephant 16')
+        newGame = Button(newwindow, text='New Game', font='Calibri 14', borderwidth=2, fg='black', bg="white", width=10, command=lambda: Restart(newwindow))
         newGame.place(x=100, y=65)
-        exit = Button(newwindow, text='Exit',width='10', font='Arial 14', command=lambda: window.destroy())
+        exit = Button(newwindow, text='Exit', font='Calibri 14', borderwidth=2, fg='black', bg="white", width=10, command=lambda: window.destroy())
         exit.place(x=100, y=105)
-        #newGame_Btn.show()
 
     if winner == 'player2':
         newwindow = Toplevel(master=None)
-        newwindow.title('Player One Wins')
-        newwindow.geometry('320x200')
-        newwindow.config(bg='white')
+        newwindow.title('Player Two Wins')
+        newwindow.geometry('300x200')
+        newwindow.config(bg="#FFE135")
 
-        winMessage = Label(newwindow, text='Player Two Won this game', bg='white', font='Calibri 14')
-        winMessage.place(x=40, y=25)
-        newGame = Button(newwindow, text='New game',width='10', font='Arial 14', command=lambda: Restart(newwindow))
+        newwinBg = Canvas(newwindow, width=300, height=200)
+        newwinBg.pack()
+        newwinBg.create_image(0,0,image=img,anchor='nw')
+        newwindow.resizable(False,False)
+
+        newwinBg.create_text(150,40,text='Player Two Won this game',font='Elephant 16')
+        newGame = Button(newwindow, text='New Game', font='Calibri 14', borderwidth=2, fg='black', bg="white", width=10, command=lambda: Restart(newwindow))
         newGame.place(x=100, y=65)
-        exit = Button(newwindow, text='Exit',width='10', font='Arial 14', command=lambda: window.destroy())
+        exit = Button(newwindow, text='Exit', font='Calibri 14', borderwidth=2, fg='black', bg="white", width=10, command=lambda: window.destroy())
         exit.place(x=100, y=105)
     
     if winner == 'draw':
         newwindow = Toplevel(master=None)
-        newwindow.title('Player One Wins')
-        newwindow.geometry('320x200')
-        newwindow.config(bg='white')
+        newwindow.title('Players Tie')
+        newwindow.geometry('300x200')
+        newwindow.config(bg="#FFE135")
 
-        winMessage = Label(newwindow, text="It's a tie", bg='white', font='Calibri 14')
-        winMessage.place(x=40, y=25)
-        newGame = Button(newwindow, text='New game',width='10', font='Arial 14', command=lambda: Restart(newwindow))
+        newwinBg = Canvas(newwindow, width=300, height=200)
+        newwinBg.pack()
+        newwinBg.create_image(0,0,image=img,anchor='nw')
+        newwindow.resizable(False,False)
+
+        newwinBg.create_text(150,40,text="It's a tie",font='Elephant 16')
+        newGame = Button(newwindow, text='New Game', font='Calibri 14', borderwidth=2, fg='black', bg="white", width=10, command=lambda: Restart(newwindow))
         newGame.place(x=100, y=65)
-        exit = Button(newwindow, text='Exit',width='10', font='Arial 14', command=lambda: window.destroy())
+        exit = Button(newwindow, text='Exit', font='Calibri 14', borderwidth=2, fg='black', bg="white", width=10, command=lambda: window.destroy())
         exit.place(x=100, y=105)
+
+
 
 def win():
     if box1.itemcget(btOne, 'text') == 'x' and box2.itemcget(btTwo, 'text') == 'x' and box3.itemcget(btThree, 'text') == 'x':
@@ -304,6 +330,7 @@ def win():
         winner = 'draw'
         Winner(winner)
 
+
 menu_widget = Menu(window)
 window.config(menu=menu_widget)
 
@@ -315,52 +342,53 @@ menu_widget.add_cascade(label="Options", menu=submenu_widget)
 menu_widget.add_command(label="Help", command=Help)
 
 canvas = tkinter.Canvas(window,bg="white",highlightthickness=0)
-canvas.place(x=10,y=70,width=270)
+canvas.place(x=15,y=35,width=270)
 canvas.create_line(90,250,90,20, fill="green", width=3)
 canvas.create_line(180,250,180,20, fill="green", width=3)
 canvas.create_line(20,90,250,90, fill="green", width=3)
 canvas.create_line(20,180,250,180, fill="green", width=3)
 
+
 box1 = tkinter.Canvas(window,width=75,height=75,bg="white",highlightthickness=0)
 box1.bind("<Button-1>",boxOne)
-box1.place(x=20,y=80)
+box1.place(x=25,y=46)
 
 box2 = tkinter.Canvas(window,width=75,height=75,bg="white",highlightthickness=0)
 box2.bind("<Button-1>",boxTwo)
-box2.place(x=108,y=80)
+box2.place(x=113,y=46)
 
 box3 = tkinter.Canvas(window,width=75,height=75,bg="white",highlightthickness=0)
 box3.bind("<Button-1>", boxThree)
-box3.place(x=196,y=80)
+box3.place(x=199,y=46)
 
 box4 = tkinter.Canvas(window,width=75,height=75,bg="white",highlightthickness=0)
 box4.bind("<Button-1>", boxFour)
-box4.place(x=20,y=168)
+box4.place(x=25,y=133)
 
 box5 = tkinter.Canvas(window,width=75,height=75,bg="white",highlightthickness=0)
 box5.bind("<Button-1>", boxFive)
-box5.place(x=108,y=168)
+box5.place(x=113,y=133)
 
 box6 = tkinter.Canvas(window,width=75,height=75,bg="white",highlightthickness=0)
 box6.bind("<Button-1>", boxSix)
-box6.place(x=196,y=168)
+box6.place(x=199,y=133)
 
 box7 = tkinter.Canvas(window,width=75,height=75,bg="white",highlightthickness=0)
 box7.bind("<Button-1>", boxSeven)
-box7.place(x=20,y=255)
+box7.place(x=25,y=219)
 
 box8 = tkinter.Canvas(window,width=75,height=75,bg="white",highlightthickness=0)
 box8.bind("<Button-1>", boxEight)
-box8.place(x=108,y=255)
+box8.place(x=113,y=219)
 
 box9 = tkinter.Canvas(window,width=75,height=75,bg="white",highlightthickness=0)
 box9.bind("<Button-1>", boxNine)
-box9.place(x=196,y=255)
+box9.place(x=199,y=219)
 
 xButton = tkinter.Button(window,text="X",font="Calibri 14",fg="black",bg="white", state=NORMAL)
-xButton.place(x=45,y=350,width=100)
+xButton.place(x=50,y=310,width=100)
 oButton = tkinter.Button(window,text="O",font="Calibri 14",fg="white",bg="black", state=DISABLED)
-oButton.place(x=145,y=350,width=100)
+oButton.place(x=150,y=310,width=100)
 
 window.mainloop()
 
