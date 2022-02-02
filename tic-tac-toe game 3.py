@@ -1,4 +1,5 @@
 import tkinter
+import PIL
 from tkinter import *
 from tkinter import Menu
 from tkinter.constants import DISABLED, NORMAL
