@@ -1,20 +1,23 @@
 import tkinter
-import PIL
 from tkinter import *
 from tkinter import Menu
 from tkinter.constants import DISABLED, NORMAL
 from PIL import ImageTk,Image
 
 window = tkinter.Tk()
-window.geometry('300x400')
-window.title("Xs AND Os")
+window.geometry('300x500')
+window.title("Tic-Tac-Toe")
 window.configure(bg="#FFE135")
+window.iconbitmap(r'icon.ico')
 
-img3 = ImageTk.PhotoImage(Image.open("C:/Users/Deborah/Desktop/bg1.jpg"))
-winBg = Canvas(window, width=300, height=400)
+img3 = ImageTk.PhotoImage(Image.open("bg1.jpg"))
+winBg = Canvas(window, width=300, height=480)
 winBg.pack()
 winBg.create_image(0,0,image=img3,anchor='nw')
 window.resizable(False,False)
+
+playerOneScore = 0
+playerTwoScore = ''
 
 def changeStateOne():
         xButton['state'] = tkinter.DISABLED
@@ -196,7 +199,7 @@ def Restart(newTopLevel):
 
     newTopLevel.destroy()
 
-img = ImageTk.PhotoImage(Image.open("C:/Users/Deborah/Desktop/bg2.jpg"))
+img = ImageTk.PhotoImage(Image.open("bg2.jpg"))
 def MenuNewGame():
     changeStateTwo()
 
@@ -222,6 +225,7 @@ def MenuNewGame():
     
 def Winner(winner):
     global newwinBg
+    global playerOneScore
     if winner == 'player1':
         newwindow = Toplevel(master=None)
         newwindow.title('Player One Wins')
@@ -232,11 +236,12 @@ def Winner(winner):
         newwinBg.pack()
         newwinBg.create_image(0,0,image=img,anchor='nw')
         newwindow.resizable(False,False)
+        playerOneScore += 1
 
 
         '''winMessage = Label(newwindow, text='Player One Won this game', bg="#FFE135", font='Calibri 14')
         winMessage.place(x=40, y=25)'''
-        newwinBg.create_text(150,40,text='Player One Won this game',font='Elephant 16')
+        newwinBg.create_text(150,40,text='Winner: Player 1',font='Elephant 16')
         newGame = Button(newwindow, text='New Game', font='Calibri 14', borderwidth=2, fg='black', bg="white", width=10, command=lambda: Restart(newwindow))
         newGame.place(x=100, y=65)
         exit = Button(newwindow, text='Exit', font='Calibri 14', borderwidth=2, fg='black', bg="white", width=10, command=lambda: window.destroy())
@@ -253,7 +258,7 @@ def Winner(winner):
         newwinBg.create_image(0,0,image=img,anchor='nw')
         newwindow.resizable(False,False)
 
-        newwinBg.create_text(150,40,text='Player Two Won this game',font='Elephant 16')
+        newwinBg.create_text(150,40,text='Winner: Player 2',font='Elephant 16')
         newGame = Button(newwindow, text='New Game', font='Calibri 14', borderwidth=2, fg='black', bg="white", width=10, command=lambda: Restart(newwindow))
         newGame.place(x=100, y=65)
         exit = Button(newwindow, text='Exit', font='Calibri 14', borderwidth=2, fg='black', bg="white", width=10, command=lambda: window.destroy())
@@ -343,7 +348,7 @@ menu_widget.add_cascade(label="Options", menu=submenu_widget)
 menu_widget.add_command(label="Help", command=Help)
 
 canvas = tkinter.Canvas(window,bg="white",highlightthickness=0)
-canvas.place(x=15,y=35,width=270)
+canvas.place(x=15,y=105,width=270)
 canvas.create_line(90,250,90,20, fill="green", width=3)
 canvas.create_line(180,250,180,20, fill="green", width=3)
 canvas.create_line(20,90,250,90, fill="green", width=3)
@@ -352,44 +357,51 @@ canvas.create_line(20,180,250,180, fill="green", width=3)
 
 box1 = tkinter.Canvas(window,width=75,height=75,bg="white",highlightthickness=0)
 box1.bind("<Button-1>",boxOne)
-box1.place(x=25,y=46)
+box1.place(x=25,y=116)
 
 box2 = tkinter.Canvas(window,width=75,height=75,bg="white",highlightthickness=0)
 box2.bind("<Button-1>",boxTwo)
-box2.place(x=113,y=46)
+box2.place(x=113,y=116)
 
 box3 = tkinter.Canvas(window,width=75,height=75,bg="white",highlightthickness=0)
 box3.bind("<Button-1>", boxThree)
-box3.place(x=199,y=46)
+box3.place(x=199,y=116)
 
 box4 = tkinter.Canvas(window,width=75,height=75,bg="white",highlightthickness=0)
 box4.bind("<Button-1>", boxFour)
-box4.place(x=25,y=133)
+box4.place(x=25,y=203)
 
 box5 = tkinter.Canvas(window,width=75,height=75,bg="white",highlightthickness=0)
 box5.bind("<Button-1>", boxFive)
-box5.place(x=113,y=133)
+box5.place(x=113,y=203)
 
 box6 = tkinter.Canvas(window,width=75,height=75,bg="white",highlightthickness=0)
 box6.bind("<Button-1>", boxSix)
-box6.place(x=199,y=133)
+box6.place(x=199,y=203)
 
 box7 = tkinter.Canvas(window,width=75,height=75,bg="white",highlightthickness=0)
 box7.bind("<Button-1>", boxSeven)
-box7.place(x=25,y=219)
+box7.place(x=25,y=289)
 
 box8 = tkinter.Canvas(window,width=75,height=75,bg="white",highlightthickness=0)
 box8.bind("<Button-1>", boxEight)
-box8.place(x=113,y=219)
+box8.place(x=113,y=289)
 
 box9 = tkinter.Canvas(window,width=75,height=75,bg="white",highlightthickness=0)
 box9.bind("<Button-1>", boxNine)
-box9.place(x=199,y=219)
+box9.place(x=199,y=289)
 
 xButton = tkinter.Button(window,text="X",font="Calibri 14",fg="black",bg="white", state=NORMAL)
-xButton.place(x=50,y=310,width=100)
+xButton.place(x=50,y=410,width=100)
 oButton = tkinter.Button(window,text="O",font="Calibri 14",fg="white",bg="black", state=DISABLED)
-oButton.place(x=150,y=310,width=100)
+oButton.place(x=150,y=410,width=100)
+
+
+labelone = tkinter.LabelFrame(winBg, text='Player 1', fg='blue', bg='white')
+labelone.place(x=50,y=0)
+
+labeltext = tkinter.Label(labelone, text=playerOneScore)
+labeltext.pack()
 
 window.mainloop()
 
